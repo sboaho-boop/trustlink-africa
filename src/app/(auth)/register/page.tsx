@@ -14,12 +14,18 @@ export default function RegisterPage() {
     confirmPassword: "",
     role: "customer",
   })
+  const [agreed, setAgreed] = useState(false)
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
+
+    if (!agreed) {
+      setError("You must agree to the Privacy Policy and Terms of Service")
+      return
+    }
 
     if (form.password !== form.confirmPassword) {
       setError("Passwords do not match")
@@ -112,6 +118,26 @@ export default function RegisterPage() {
               { value: "worker", label: "Offer my services" },
             ]}
           />
+
+          <div className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="agree-terms"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              className="mt-1 rounded border-gray-300 text-primary focus:ring-primary"
+            />
+            <label htmlFor="agree-terms" className="text-sm text-muted leading-snug">
+              I agree to the{" "}
+              <Link href="/privacy-policy" target="_blank" className="text-primary font-medium hover:underline">
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link href="/terms-of-service" target="_blank" className="text-primary font-medium hover:underline">
+                Terms of Service
+              </Link>
+            </label>
+          </div>
 
           <Button type="submit" loading={loading} className="w-full" size="lg">
             Create Account

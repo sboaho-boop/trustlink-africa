@@ -55,8 +55,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} TrustLink Africa. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm">
-            <span className="text-gray-500 hover:text-gray-300 cursor-pointer">Privacy</span>
-            <span className="text-gray-500 hover:text-gray-300 cursor-pointer">Terms</span>
+            <Link href="/privacy-policy" className="text-gray-500 hover:text-gray-300">Privacy</Link>
+            <Link href="/terms-of-service" className="text-gray-500 hover:text-gray-300">Terms</Link>
             <span className="text-gray-500 hover:text-gray-300 cursor-pointer">Support</span>
           </div>
         </div>
