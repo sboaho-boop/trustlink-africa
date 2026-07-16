@@ -6,6 +6,9 @@ import Footer from "@/components/layout/Footer"
 export const metadata: Metadata = {
   title: "TrustLink Africa - Find Trusted Workers You Can Rely On",
   description: "Connect with verified domestic workers, artisans, and service providers across Ghana. Every worker is background-checked and rated by the community.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({

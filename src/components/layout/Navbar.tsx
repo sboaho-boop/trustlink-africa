@@ -33,9 +33,16 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">TL</span>
-              </div>
+              <svg viewBox="0 0 120 120" className="w-8 h-8">
+                <defs>
+                  <linearGradient id="nav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:'#22c55e'}} />
+                    <stop offset="100%" style={{stopColor:'#16a34a'}} />
+                  </linearGradient>
+                </defs>
+                <path d="M60 8 L95 2 L95 55 Q95 85 60 105 Q25 85 25 55 L25 2 Z" fill="url(#nav-grad)" />
+                <polyline points="38,52 52,68 82,35" fill="none" stroke="white" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
               <span className="text-xl font-bold text-foreground">
                 Trust<span className="text-primary">Link</span>
               </span>

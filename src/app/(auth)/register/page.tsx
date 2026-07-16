@@ -64,9 +64,16 @@ export default function RegisterPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 mb-6">
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold">TL</span>
-            </div>
+            <svg viewBox="0 0 120 120" className="w-10 h-10">
+              <defs>
+                <linearGradient id="register-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor:'#22c55e'}} />
+                  <stop offset="100%" style={{stopColor:'#16a34a'}} />
+                </linearGradient>
+              </defs>
+              <path d="M60 8 L95 2 L95 55 Q95 85 60 105 Q25 85 25 55 L25 2 Z" fill="url(#register-grad)" />
+              <polyline points="38,52 52,68 82,35" fill="none" stroke="white" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
             <span className="text-2xl font-bold text-foreground">
               Trust<span className="text-primary">Link</span>
             </span>

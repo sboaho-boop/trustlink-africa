@@ -34,7 +34,9 @@
     "@types/uuid": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "puppeteer": "^25.3.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.1",
     "typescript": "^5"
   }
 }
