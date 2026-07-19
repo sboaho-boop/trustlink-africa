@@ -26,9 +26,11 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
     budget: "",
     notes: "",
   })
-  const [reviewForm, setReviewForm] = useState({ rating: 5, comment: "" })
+  const [reviewForm, setReviewForm] = useState({ rating: 5, ratingPunctuality: 5, ratingQuality: 5, ratingCommunication: 5, comment: "" })
   const [message, setMessage] = useState("")
   const [submitting, setSubmitting] = useState(false)
+  const [isSaved, setIsSaved] = useState(false)
+  const [shareMenuOpen, setShareMenuOpen] = useState(false)
 
   const fetchWorker = useCallback(async () => {
     try {
@@ -43,9 +45,77 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
   }, [id])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchWorker()
-  }, [fetchWorker])
+    if (token) {
+      fetch("/api/saved-workers", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (Array.isArray(data)) {
+            setIsSaved(data.some((sw: { workerId: string }) => sw.workerId === id))
+          }
+        })
+        .catch(console.error)
+    }
+  }, [fetchWorker, token, id])
+
+  const toggleSaveWorker = async () => {
+    if (!token) {
+      router.push("/login")
+      return
+    }
+    try {
+      if (isSaved) {
+        const res = await fetch("/api/saved-workers", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        const data = await res.json()
+        const saved = Array.isArray(data) ? data.find((sw: { workerId: string }) => sw.workerId === id) : null
+        if (saved) {
+          await fetch(`/api/saved-workers?id=${saved.id}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${token}` },
+          })
+        }
+        setIsSaved(false)
+      } else {
+        await fetch("/api/saved-workers", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ workerId: id }),
+        })
+        setIsSaved(true)
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const shareWorker = (platform: string) => {
+    const url = typeof window !== "undefined" ? window.location.href : ""
+    const text = `Check out ${worker?.fullName} on TrustLink Africa - ${worker?.serviceCategory}`
+
+    switch (platform) {
+      case "whatsapp":
+        window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + url)}`, "_blank")
+        break
+      case "twitter":
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, "_blank")
+        break
+      case "facebook":
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, "_blank")
+        break
+      case "copy":
+        navigator.clipboard.writeText(url)
+        setMessage("Link copied to clipboard!")
+        break
+    }
+    setShareMenuOpen(false)
+  }
 
   const handleBooking = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -103,7 +173,7 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
       if (res.ok) {
         setMessage("Review submitted successfully!")
         setShowReview(false)
-        setReviewForm({ rating: 5, comment: "" })
+        setReviewForm({ rating: 5, ratingPunctuality: 5, ratingQuality: 5, ratingCommunication: 5, comment: "" })
         fetchWorker()
       } else {
         const data = await res.json()
@@ -157,17 +227,25 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
       {/* Profile Header */}
       <div className="bg-white border border-border rounded-2xl p-6 md:p-8 shadow-sm mb-6">
         <div className="flex flex-col sm:flex-row items-start gap-6">
-          {worker.profilePicture ? (
-            <img src={worker.profilePicture} alt={worker.fullName} className="w-20 h-20 rounded-full object-cover ring-4 ring-primary/20" />
-          ) : (
-            <div className="w-20 h-20 rounded-full bg-primary-light flex items-center justify-center ring-4 ring-primary/20">
-              <span className="text-primary-dark font-bold text-2xl">{initials}</span>
-            </div>
-          )}
+          <div className="relative">
+            {worker.profilePicture ? (
+              <img src={worker.profilePicture} alt={worker.fullName} className="w-20 h-20 rounded-full object-cover ring-4 ring-primary/20" />
+            ) : (
+              <div className="w-20 h-20 rounded-full bg-primary-light flex items-center justify-center ring-4 ring-primary/20">
+                <span className="text-primary-dark font-bold text-2xl">{initials}</span>
+              </div>
+            )}
+            {worker.isOnline && (
+              <span className="absolute bottom-0 right-0 w-5 h-5 bg-emerald-500 rounded-full border-2 border-white" />
+            )}
+          </div>
 
           <div className="flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
               <h1 className="text-2xl font-bold text-foreground">{worker.fullName}</h1>
+              {worker.isOnline && (
+                <span className="text-xs text-emerald-600 font-medium">Active now</span>
+              )}
               {worker.verificationStatus === "approved" && (
                 <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 text-xs font-medium px-3 py-1 rounded-full w-fit">
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -195,6 +273,48 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
             <div className="flex items-center gap-4">
               <StarRating rating={worker.rating} count={worker.reviewCount} />
               <TrustScoreBadge score={worker.trustScore} size="md" />
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleSaveWorker}
+              className={`p-2 rounded-lg transition-colors ${
+                isSaved ? "bg-red-50 text-red-500" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+              }`}
+              title={isSaved ? "Unsave worker" : "Save worker"}
+            >
+              <svg className="w-5 h-5" fill={isSaved ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+            <div className="relative">
+              <button
+                onClick={() => setShareMenuOpen(!shareMenuOpen)}
+                className="p-2 rounded-lg bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors"
+                title="Share profile"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+              </button>
+              {shareMenuOpen && (
+                <div className="absolute right-0 top-full mt-2 bg-white border border-border rounded-xl shadow-lg p-2 z-10 min-w-[160px]">
+                  <button onClick={() => shareWorker("whatsapp")} className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-gray-100 rounded-lg">
+                    <span className="text-green-500">💬</span> WhatsApp
+                  </button>
+                  <button onClick={() => shareWorker("twitter")} className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-gray-100 rounded-lg">
+                    <span className="text-blue-400">🐦</span> Twitter
+                  </button>
+                  <button onClick={() => shareWorker("facebook")} className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-gray-100 rounded-lg">
+                    <span className="text-blue-600">📘</span> Facebook
+                  </button>
+                  <button onClick={() => shareWorker("copy")} className="w-full flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-gray-100 rounded-lg">
+                    <span>🔗</span> Copy Link
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -249,12 +369,50 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
             {showReview && (
               <form onSubmit={handleReview} className="bg-gray-50 rounded-lg p-4 mb-4 space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Rating</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">Overall Rating</label>
                   <StarRating
                     rating={reviewForm.rating}
                     interactive
                     onChange={(r) => setReviewForm({ ...reviewForm, rating: r })}
                   />
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  <div>
+                    <label className="block text-xs font-medium text-muted mb-1">Punctuality</label>
+                    <select
+                      value={reviewForm.ratingPunctuality}
+                      onChange={(e) => setReviewForm({ ...reviewForm, ratingPunctuality: parseInt(e.target.value) })}
+                      className="w-full px-2 py-1.5 rounded border border-border text-sm"
+                    >
+                      {[5, 4, 3, 2, 1].map((v) => (
+                        <option key={v} value={v}>{v} Star{v !== 1 ? "s" : ""}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-muted mb-1">Quality</label>
+                    <select
+                      value={reviewForm.ratingQuality}
+                      onChange={(e) => setReviewForm({ ...reviewForm, ratingQuality: parseInt(e.target.value) })}
+                      className="w-full px-2 py-1.5 rounded border border-border text-sm"
+                    >
+                      {[5, 4, 3, 2, 1].map((v) => (
+                        <option key={v} value={v}>{v} Star{v !== 1 ? "s" : ""}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-muted mb-1">Communication</label>
+                    <select
+                      value={reviewForm.ratingCommunication}
+                      onChange={(e) => setReviewForm({ ...reviewForm, ratingCommunication: parseInt(e.target.value) })}
+                      className="w-full px-2 py-1.5 rounded border border-border text-sm"
+                    >
+                      {[5, 4, 3, 2, 1].map((v) => (
+                        <option key={v} value={v}>{v} Star{v !== 1 ? "s" : ""}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
                 <Textarea
                   label="Comment"
@@ -335,6 +493,17 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
               <Button className="w-full" onClick={() => setShowBooking(!showBooking)}>
                 Request Service
               </Button>
+              {user && user.id !== worker.userId && (
+                <Link
+                  href="/messages"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg border border-border text-sm font-medium text-foreground hover:bg-gray-50 transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                  Send Message
+                </Link>
+              )}
               {worker.phone && (
                 <a
                   href={`tel:${worker.phone}`}
@@ -359,6 +528,35 @@ export default function WorkerDetailPage({ params }: { params: Promise<{ id: str
                   WhatsApp
                 </a>
               )}
+            </div>
+          </div>
+
+          {/* Availability */}
+          <div className="bg-white border border-border rounded-xl p-6 shadow-sm">
+            <h2 className="text-lg font-semibold text-foreground mb-4">Availability</h2>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm text-muted mb-2">Working Days</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {["mon", "tue", "wed", "thu", "fri", "sat", "sun"].map((day) => {
+                    const isAvailable = worker.availableDays?.includes(day)
+                    return (
+                      <span
+                        key={day}
+                        className={`px-2.5 py-1 rounded text-xs font-medium ${
+                          isAvailable ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-400"
+                        }`}
+                      >
+                        {day.charAt(0).toUpperCase() + day.slice(1)}
+                      </span>
+                    )
+                  })}
+                </div>
+              </div>
+              <div>
+                <p className="text-sm text-muted mb-1">Working Hours</p>
+                <p className="text-sm font-medium text-foreground">{worker.availableHours || "08:00-17:00"}</p>
+              </div>
             </div>
           </div>
         </div>

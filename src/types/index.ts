@@ -15,6 +15,8 @@ export interface WorkerProfile {
   yearsExperience: number
   skills: string
   availability: string
+  availableDays: string
+  availableHours: string
   expectedMinPay?: number
   expectedMaxPay?: number
   bio?: string
@@ -34,6 +36,12 @@ export interface WorkerProfile {
   totalJobs: number
   rating: number
   reviewCount: number
+  ratingPunctuality: number
+  ratingQuality: number
+  ratingCommunication: number
+  ratingValue: number
+  isOnline: boolean
+  lastSeenAt?: string
   createdAt: string
   updatedAt: string
 }
@@ -50,6 +58,7 @@ export interface Booking {
   budget: number
   notes?: string
   status: "pending" | "accepted" | "rejected" | "completed" | "cancelled"
+  reminderSent: boolean
   createdAt: string
 }
 
@@ -58,6 +67,9 @@ export interface Review {
   workerId: string
   authorId: string
   rating: number
+  ratingPunctuality: number
+  ratingQuality: number
+  ratingCommunication: number
   comment?: string
   createdAt: string
 }
@@ -66,6 +78,15 @@ export interface User {
   id: string
   email: string
   role: "customer" | "worker" | "admin"
+}
+
+export interface Message {
+  id: string
+  senderId: string
+  receiverId: string
+  content: string
+  read: boolean
+  createdAt: string
 }
 
 export const SERVICE_CATEGORIES = [
@@ -113,12 +134,35 @@ export const AVAILABILITY_OPTIONS = [
   { value: "casual", label: "Casual/On-demand" },
 ] as const
 
+export const DAYS_OF_WEEK = [
+  { value: "mon", label: "Monday" },
+  { value: "tue", label: "Tuesday" },
+  { value: "wed", label: "Wednesday" },
+  { value: "thu", label: "Thursday" },
+  { value: "fri", label: "Friday" },
+  { value: "sat", label: "Saturday" },
+  { value: "sun", label: "Sunday" },
+] as const
+
 export const GHANA_CITIES: Record<string, string[]> = {
   "Greater Accra": ["Accra", "Tema", "Kpone", "Dodowa", "Adenta", "East Legon", "Spintex", "Teshie", "Nungua", "Kasoa", "Tarkwa Nsuaem"],
-  "Ashanti": ["Kumasi", "Ejisu", "Obuasi", "Tamale", "Konongo", "Mampong"],
-  "Western": ["Sekondi", "Takoradi", "Tarkwa", "Axim"],
-  "Central": ["Cape Coast", "Winneba", "Saltpond", "Mankessim"],
-  "Eastern": ["Koforidua", "Nkawkaw", "Nsawam", "Suhum"],
-  "Northern": ["Tamale", "Yendi", "Buipe", "Damongo"],
-  "Volta": ["Ho", "Hohoe", "Keta", "Denu"],
+  Ashanti: ["Kumasi", "Ejisu", "Obuasi", "Tamale", "Konongo", "Mampong"],
+  Western: ["Sekondi", "Takoradi", "Tarkwa", "Axim"],
+  Central: ["Cape Coast", "Winneba", "Saltpond", "Mankessim"],
+  Eastern: ["Koforidua", "Nkawkaw", "Nsawam", "Suhum"],
+  Northern: ["Tamale", "Yendi", "Buipe", "Damongo"],
+  Volta: ["Ho", "Hohoe", "Keta", "Denu"],
 }
+
+export const LANGUAGES = [
+  "English",
+  "Twi",
+  "Ga",
+  "Ewe",
+  "Dagbani",
+  "Hausa",
+  "Fante",
+  "Kusaal",
+  "Mampruli",
+  "Other",
+] as const

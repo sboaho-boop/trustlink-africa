@@ -194,6 +194,9 @@ export type UserWhereInput = {
   bookings?: Prisma.BookingListRelationFilter
   reviewsGiven?: Prisma.ReviewListRelationFilter
   reviewsReceived?: Prisma.ReviewListRelationFilter
+  savedWorkers?: Prisma.SavedWorkerListRelationFilter
+  messagesSent?: Prisma.MessageListRelationFilter
+  messagesReceived?: Prisma.MessageListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -207,6 +210,9 @@ export type UserOrderByWithRelationInput = {
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   reviewsGiven?: Prisma.ReviewOrderByRelationAggregateInput
   reviewsReceived?: Prisma.ReviewOrderByRelationAggregateInput
+  savedWorkers?: Prisma.SavedWorkerOrderByRelationAggregateInput
+  messagesSent?: Prisma.MessageOrderByRelationAggregateInput
+  messagesReceived?: Prisma.MessageOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -223,6 +229,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   bookings?: Prisma.BookingListRelationFilter
   reviewsGiven?: Prisma.ReviewListRelationFilter
   reviewsReceived?: Prisma.ReviewListRelationFilter
+  savedWorkers?: Prisma.SavedWorkerListRelationFilter
+  messagesSent?: Prisma.MessageListRelationFilter
+  messagesReceived?: Prisma.MessageListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -260,6 +269,9 @@ export type UserCreateInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutCustomerInput
   reviewsGiven?: Prisma.ReviewCreateNestedManyWithoutAuthorInput
   reviewsReceived?: Prisma.ReviewCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageCreateNestedManyWithoutReceiverInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -273,6 +285,9 @@ export type UserUncheckedCreateInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutCustomerInput
   reviewsGiven?: Prisma.ReviewUncheckedCreateNestedManyWithoutAuthorInput
   reviewsReceived?: Prisma.ReviewUncheckedCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
 }
 
 export type UserUpdateInput = {
@@ -286,6 +301,9 @@ export type UserUpdateInput = {
   bookings?: Prisma.BookingUpdateManyWithoutCustomerNestedInput
   reviewsGiven?: Prisma.ReviewUpdateManyWithoutAuthorNestedInput
   reviewsReceived?: Prisma.ReviewUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -299,6 +317,9 @@ export type UserUncheckedUpdateInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutCustomerNestedInput
   reviewsGiven?: Prisma.ReviewUncheckedUpdateManyWithoutAuthorNestedInput
   reviewsReceived?: Prisma.ReviewUncheckedUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -431,6 +452,48 @@ export type UserUpdateOneWithoutReviewsReceivedNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReviewsReceivedInput, Prisma.UserUpdateWithoutReviewsReceivedInput>, Prisma.UserUncheckedUpdateWithoutReviewsReceivedInput>
 }
 
+export type UserCreateNestedOneWithoutSavedWorkersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedWorkersInput, Prisma.UserUncheckedCreateWithoutSavedWorkersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedWorkersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSavedWorkersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedWorkersInput, Prisma.UserUncheckedCreateWithoutSavedWorkersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedWorkersInput
+  upsert?: Prisma.UserUpsertWithoutSavedWorkersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSavedWorkersInput, Prisma.UserUpdateWithoutSavedWorkersInput>, Prisma.UserUncheckedUpdateWithoutSavedWorkersInput>
+}
+
+export type UserCreateNestedOneWithoutMessagesSentInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMessagesSentInput, Prisma.UserUncheckedCreateWithoutMessagesSentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesSentInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutMessagesReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMessagesReceivedInput, Prisma.UserUncheckedCreateWithoutMessagesReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMessagesSentNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMessagesSentInput, Prisma.UserUncheckedCreateWithoutMessagesSentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesSentInput
+  upsert?: Prisma.UserUpsertWithoutMessagesSentInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMessagesSentInput, Prisma.UserUpdateWithoutMessagesSentInput>, Prisma.UserUncheckedUpdateWithoutMessagesSentInput>
+}
+
+export type UserUpdateOneRequiredWithoutMessagesReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMessagesReceivedInput, Prisma.UserUncheckedCreateWithoutMessagesReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMessagesReceivedInput
+  upsert?: Prisma.UserUpsertWithoutMessagesReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMessagesReceivedInput, Prisma.UserUpdateWithoutMessagesReceivedInput>, Prisma.UserUncheckedUpdateWithoutMessagesReceivedInput>
+}
+
 export type UserCreateWithoutWorkerProfileInput = {
   id?: string
   email: string
@@ -441,6 +504,9 @@ export type UserCreateWithoutWorkerProfileInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutCustomerInput
   reviewsGiven?: Prisma.ReviewCreateNestedManyWithoutAuthorInput
   reviewsReceived?: Prisma.ReviewCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageCreateNestedManyWithoutReceiverInput
 }
 
 export type UserUncheckedCreateWithoutWorkerProfileInput = {
@@ -453,6 +519,9 @@ export type UserUncheckedCreateWithoutWorkerProfileInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutCustomerInput
   reviewsGiven?: Prisma.ReviewUncheckedCreateNestedManyWithoutAuthorInput
   reviewsReceived?: Prisma.ReviewUncheckedCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
 }
 
 export type UserCreateOrConnectWithoutWorkerProfileInput = {
@@ -481,6 +550,9 @@ export type UserUpdateWithoutWorkerProfileInput = {
   bookings?: Prisma.BookingUpdateManyWithoutCustomerNestedInput
   reviewsGiven?: Prisma.ReviewUpdateManyWithoutAuthorNestedInput
   reviewsReceived?: Prisma.ReviewUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWorkerProfileInput = {
@@ -493,6 +565,9 @@ export type UserUncheckedUpdateWithoutWorkerProfileInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutCustomerNestedInput
   reviewsGiven?: Prisma.ReviewUncheckedUpdateManyWithoutAuthorNestedInput
   reviewsReceived?: Prisma.ReviewUncheckedUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
@@ -505,6 +580,9 @@ export type UserCreateWithoutBookingsInput = {
   workerProfile?: Prisma.WorkerCreateNestedOneWithoutUserInput
   reviewsGiven?: Prisma.ReviewCreateNestedManyWithoutAuthorInput
   reviewsReceived?: Prisma.ReviewCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageCreateNestedManyWithoutReceiverInput
 }
 
 export type UserUncheckedCreateWithoutBookingsInput = {
@@ -517,6 +595,9 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   workerProfile?: Prisma.WorkerUncheckedCreateNestedOneWithoutUserInput
   reviewsGiven?: Prisma.ReviewUncheckedCreateNestedManyWithoutAuthorInput
   reviewsReceived?: Prisma.ReviewUncheckedCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
 }
 
 export type UserCreateOrConnectWithoutBookingsInput = {
@@ -545,6 +626,9 @@ export type UserUpdateWithoutBookingsInput = {
   workerProfile?: Prisma.WorkerUpdateOneWithoutUserNestedInput
   reviewsGiven?: Prisma.ReviewUpdateManyWithoutAuthorNestedInput
   reviewsReceived?: Prisma.ReviewUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -557,6 +641,9 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   workerProfile?: Prisma.WorkerUncheckedUpdateOneWithoutUserNestedInput
   reviewsGiven?: Prisma.ReviewUncheckedUpdateManyWithoutAuthorNestedInput
   reviewsReceived?: Prisma.ReviewUncheckedUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserCreateWithoutReviewsGivenInput = {
@@ -569,6 +656,9 @@ export type UserCreateWithoutReviewsGivenInput = {
   workerProfile?: Prisma.WorkerCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutCustomerInput
   reviewsReceived?: Prisma.ReviewCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageCreateNestedManyWithoutReceiverInput
 }
 
 export type UserUncheckedCreateWithoutReviewsGivenInput = {
@@ -581,6 +671,9 @@ export type UserUncheckedCreateWithoutReviewsGivenInput = {
   workerProfile?: Prisma.WorkerUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutCustomerInput
   reviewsReceived?: Prisma.ReviewUncheckedCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
 }
 
 export type UserCreateOrConnectWithoutReviewsGivenInput = {
@@ -598,6 +691,9 @@ export type UserCreateWithoutReviewsReceivedInput = {
   workerProfile?: Prisma.WorkerCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutCustomerInput
   reviewsGiven?: Prisma.ReviewCreateNestedManyWithoutAuthorInput
+  savedWorkers?: Prisma.SavedWorkerCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageCreateNestedManyWithoutReceiverInput
 }
 
 export type UserUncheckedCreateWithoutReviewsReceivedInput = {
@@ -610,6 +706,9 @@ export type UserUncheckedCreateWithoutReviewsReceivedInput = {
   workerProfile?: Prisma.WorkerUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutCustomerInput
   reviewsGiven?: Prisma.ReviewUncheckedCreateNestedManyWithoutAuthorInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
 }
 
 export type UserCreateOrConnectWithoutReviewsReceivedInput = {
@@ -638,6 +737,9 @@ export type UserUpdateWithoutReviewsGivenInput = {
   workerProfile?: Prisma.WorkerUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutCustomerNestedInput
   reviewsReceived?: Prisma.ReviewUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsGivenInput = {
@@ -650,6 +752,9 @@ export type UserUncheckedUpdateWithoutReviewsGivenInput = {
   workerProfile?: Prisma.WorkerUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutCustomerNestedInput
   reviewsReceived?: Prisma.ReviewUncheckedUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserUpsertWithoutReviewsReceivedInput = {
@@ -673,6 +778,9 @@ export type UserUpdateWithoutReviewsReceivedInput = {
   workerProfile?: Prisma.WorkerUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutCustomerNestedInput
   reviewsGiven?: Prisma.ReviewUpdateManyWithoutAuthorNestedInput
+  savedWorkers?: Prisma.SavedWorkerUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsReceivedInput = {
@@ -685,6 +793,237 @@ export type UserUncheckedUpdateWithoutReviewsReceivedInput = {
   workerProfile?: Prisma.WorkerUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutCustomerNestedInput
   reviewsGiven?: Prisma.ReviewUncheckedUpdateManyWithoutAuthorNestedInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
+}
+
+export type UserCreateWithoutSavedWorkersInput = {
+  id?: string
+  email: string
+  password: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workerProfile?: Prisma.WorkerCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutCustomerInput
+  reviewsGiven?: Prisma.ReviewCreateNestedManyWithoutAuthorInput
+  reviewsReceived?: Prisma.ReviewCreateNestedManyWithoutTargetInput
+  messagesSent?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageCreateNestedManyWithoutReceiverInput
+}
+
+export type UserUncheckedCreateWithoutSavedWorkersInput = {
+  id?: string
+  email: string
+  password: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workerProfile?: Prisma.WorkerUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutCustomerInput
+  reviewsGiven?: Prisma.ReviewUncheckedCreateNestedManyWithoutAuthorInput
+  reviewsReceived?: Prisma.ReviewUncheckedCreateNestedManyWithoutTargetInput
+  messagesSent?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messagesReceived?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
+}
+
+export type UserCreateOrConnectWithoutSavedWorkersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedWorkersInput, Prisma.UserUncheckedCreateWithoutSavedWorkersInput>
+}
+
+export type UserUpsertWithoutSavedWorkersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSavedWorkersInput, Prisma.UserUncheckedUpdateWithoutSavedWorkersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedWorkersInput, Prisma.UserUncheckedCreateWithoutSavedWorkersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSavedWorkersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSavedWorkersInput, Prisma.UserUncheckedUpdateWithoutSavedWorkersInput>
+}
+
+export type UserUpdateWithoutSavedWorkersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workerProfile?: Prisma.WorkerUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutCustomerNestedInput
+  reviewsGiven?: Prisma.ReviewUpdateManyWithoutAuthorNestedInput
+  reviewsReceived?: Prisma.ReviewUpdateManyWithoutTargetNestedInput
+  messagesSent?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSavedWorkersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workerProfile?: Prisma.WorkerUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutCustomerNestedInput
+  reviewsGiven?: Prisma.ReviewUncheckedUpdateManyWithoutAuthorNestedInput
+  reviewsReceived?: Prisma.ReviewUncheckedUpdateManyWithoutTargetNestedInput
+  messagesSent?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messagesReceived?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
+}
+
+export type UserCreateWithoutMessagesSentInput = {
+  id?: string
+  email: string
+  password: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workerProfile?: Prisma.WorkerCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutCustomerInput
+  reviewsGiven?: Prisma.ReviewCreateNestedManyWithoutAuthorInput
+  reviewsReceived?: Prisma.ReviewCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerCreateNestedManyWithoutUserInput
+  messagesReceived?: Prisma.MessageCreateNestedManyWithoutReceiverInput
+}
+
+export type UserUncheckedCreateWithoutMessagesSentInput = {
+  id?: string
+  email: string
+  password: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workerProfile?: Prisma.WorkerUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutCustomerInput
+  reviewsGiven?: Prisma.ReviewUncheckedCreateNestedManyWithoutAuthorInput
+  reviewsReceived?: Prisma.ReviewUncheckedCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutUserInput
+  messagesReceived?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
+}
+
+export type UserCreateOrConnectWithoutMessagesSentInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMessagesSentInput, Prisma.UserUncheckedCreateWithoutMessagesSentInput>
+}
+
+export type UserCreateWithoutMessagesReceivedInput = {
+  id?: string
+  email: string
+  password: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workerProfile?: Prisma.WorkerCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutCustomerInput
+  reviewsGiven?: Prisma.ReviewCreateNestedManyWithoutAuthorInput
+  reviewsReceived?: Prisma.ReviewCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageCreateNestedManyWithoutSenderInput
+}
+
+export type UserUncheckedCreateWithoutMessagesReceivedInput = {
+  id?: string
+  email: string
+  password: string
+  role?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  workerProfile?: Prisma.WorkerUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutCustomerInput
+  reviewsGiven?: Prisma.ReviewUncheckedCreateNestedManyWithoutAuthorInput
+  reviewsReceived?: Prisma.ReviewUncheckedCreateNestedManyWithoutTargetInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutUserInput
+  messagesSent?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+}
+
+export type UserCreateOrConnectWithoutMessagesReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMessagesReceivedInput, Prisma.UserUncheckedCreateWithoutMessagesReceivedInput>
+}
+
+export type UserUpsertWithoutMessagesSentInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMessagesSentInput, Prisma.UserUncheckedUpdateWithoutMessagesSentInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMessagesSentInput, Prisma.UserUncheckedCreateWithoutMessagesSentInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMessagesSentInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMessagesSentInput, Prisma.UserUncheckedUpdateWithoutMessagesSentInput>
+}
+
+export type UserUpdateWithoutMessagesSentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workerProfile?: Prisma.WorkerUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutCustomerNestedInput
+  reviewsGiven?: Prisma.ReviewUpdateManyWithoutAuthorNestedInput
+  reviewsReceived?: Prisma.ReviewUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUpdateManyWithoutUserNestedInput
+  messagesReceived?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMessagesSentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workerProfile?: Prisma.WorkerUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutCustomerNestedInput
+  reviewsGiven?: Prisma.ReviewUncheckedUpdateManyWithoutAuthorNestedInput
+  reviewsReceived?: Prisma.ReviewUncheckedUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedUpdateManyWithoutUserNestedInput
+  messagesReceived?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
+}
+
+export type UserUpsertWithoutMessagesReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMessagesReceivedInput, Prisma.UserUncheckedUpdateWithoutMessagesReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMessagesReceivedInput, Prisma.UserUncheckedCreateWithoutMessagesReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMessagesReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMessagesReceivedInput, Prisma.UserUncheckedUpdateWithoutMessagesReceivedInput>
+}
+
+export type UserUpdateWithoutMessagesReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workerProfile?: Prisma.WorkerUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutCustomerNestedInput
+  reviewsGiven?: Prisma.ReviewUpdateManyWithoutAuthorNestedInput
+  reviewsReceived?: Prisma.ReviewUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMessagesReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  workerProfile?: Prisma.WorkerUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutCustomerNestedInput
+  reviewsGiven?: Prisma.ReviewUncheckedUpdateManyWithoutAuthorNestedInput
+  reviewsReceived?: Prisma.ReviewUncheckedUpdateManyWithoutTargetNestedInput
+  savedWorkers?: Prisma.SavedWorkerUncheckedUpdateManyWithoutUserNestedInput
+  messagesSent?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 
@@ -696,12 +1035,18 @@ export type UserCountOutputType = {
   bookings: number
   reviewsGiven: number
   reviewsReceived: number
+  savedWorkers: number
+  messagesSent: number
+  messagesReceived: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | UserCountOutputTypeCountBookingsArgs
   reviewsGiven?: boolean | UserCountOutputTypeCountReviewsGivenArgs
   reviewsReceived?: boolean | UserCountOutputTypeCountReviewsReceivedArgs
+  savedWorkers?: boolean | UserCountOutputTypeCountSavedWorkersArgs
+  messagesSent?: boolean | UserCountOutputTypeCountMessagesSentArgs
+  messagesReceived?: boolean | UserCountOutputTypeCountMessagesReceivedArgs
 }
 
 /**
@@ -735,6 +1080,27 @@ export type UserCountOutputTypeCountReviewsReceivedArgs<ExtArgs extends runtime.
   where?: Prisma.ReviewWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSavedWorkersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedWorkerWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMessagesSentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MessageWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMessagesReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MessageWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -747,6 +1113,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   reviewsGiven?: boolean | Prisma.User$reviewsGivenArgs<ExtArgs>
   reviewsReceived?: boolean | Prisma.User$reviewsReceivedArgs<ExtArgs>
+  savedWorkers?: boolean | Prisma.User$savedWorkersArgs<ExtArgs>
+  messagesSent?: boolean | Prisma.User$messagesSentArgs<ExtArgs>
+  messagesReceived?: boolean | Prisma.User$messagesReceivedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -783,6 +1152,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   reviewsGiven?: boolean | Prisma.User$reviewsGivenArgs<ExtArgs>
   reviewsReceived?: boolean | Prisma.User$reviewsReceivedArgs<ExtArgs>
+  savedWorkers?: boolean | Prisma.User$savedWorkersArgs<ExtArgs>
+  messagesSent?: boolean | Prisma.User$messagesSentArgs<ExtArgs>
+  messagesReceived?: boolean | Prisma.User$messagesReceivedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -795,6 +1167,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     reviewsGiven: Prisma.$ReviewPayload<ExtArgs>[]
     reviewsReceived: Prisma.$ReviewPayload<ExtArgs>[]
+    savedWorkers: Prisma.$SavedWorkerPayload<ExtArgs>[]
+    messagesSent: Prisma.$MessagePayload<ExtArgs>[]
+    messagesReceived: Prisma.$MessagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1201,6 +1576,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   bookings<T extends Prisma.User$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviewsGiven<T extends Prisma.User$reviewsGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviewsReceived<T extends Prisma.User$reviewsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedWorkers<T extends Prisma.User$savedWorkersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savedWorkersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedWorkerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  messagesSent<T extends Prisma.User$messagesSentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messagesSentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  messagesReceived<T extends Prisma.User$messagesReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messagesReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1717,6 +2095,78 @@ export type User$reviewsReceivedArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
+}
+
+/**
+ * User.savedWorkers
+ */
+export type User$savedWorkersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedWorker
+   */
+  select?: Prisma.SavedWorkerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedWorker
+   */
+  omit?: Prisma.SavedWorkerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedWorkerInclude<ExtArgs> | null
+  where?: Prisma.SavedWorkerWhereInput
+  orderBy?: Prisma.SavedWorkerOrderByWithRelationInput | Prisma.SavedWorkerOrderByWithRelationInput[]
+  cursor?: Prisma.SavedWorkerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedWorkerScalarFieldEnum | Prisma.SavedWorkerScalarFieldEnum[]
+}
+
+/**
+ * User.messagesSent
+ */
+export type User$messagesSentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Message
+   */
+  select?: Prisma.MessageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Message
+   */
+  omit?: Prisma.MessageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MessageInclude<ExtArgs> | null
+  where?: Prisma.MessageWhereInput
+  orderBy?: Prisma.MessageOrderByWithRelationInput | Prisma.MessageOrderByWithRelationInput[]
+  cursor?: Prisma.MessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[]
+}
+
+/**
+ * User.messagesReceived
+ */
+export type User$messagesReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Message
+   */
+  select?: Prisma.MessageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Message
+   */
+  omit?: Prisma.MessageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MessageInclude<ExtArgs> | null
+  where?: Prisma.MessageWhereInput
+  orderBy?: Prisma.MessageOrderByWithRelationInput | Prisma.MessageOrderByWithRelationInput[]
+  cursor?: Prisma.MessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[]
 }
 
 /**

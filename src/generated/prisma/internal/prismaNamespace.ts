@@ -387,7 +387,9 @@ export const ModelName = {
   User: 'User',
   Worker: 'Worker',
   Booking: 'Booking',
-  Review: 'Review'
+  Review: 'Review',
+  SavedWorker: 'SavedWorker',
+  Message: 'Message'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "worker" | "booking" | "review"
+    modelProps: "user" | "worker" | "booking" | "review" | "savedWorker" | "message"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +705,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SavedWorker: {
+      payload: Prisma.$SavedWorkerPayload<ExtArgs>
+      fields: Prisma.SavedWorkerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SavedWorkerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SavedWorkerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>
+        }
+        findFirst: {
+          args: Prisma.SavedWorkerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SavedWorkerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>
+        }
+        findMany: {
+          args: Prisma.SavedWorkerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>[]
+        }
+        create: {
+          args: Prisma.SavedWorkerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>
+        }
+        createMany: {
+          args: Prisma.SavedWorkerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SavedWorkerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>[]
+        }
+        delete: {
+          args: Prisma.SavedWorkerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>
+        }
+        update: {
+          args: Prisma.SavedWorkerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>
+        }
+        deleteMany: {
+          args: Prisma.SavedWorkerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SavedWorkerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SavedWorkerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>[]
+        }
+        upsert: {
+          args: Prisma.SavedWorkerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SavedWorkerPayload>
+        }
+        aggregate: {
+          args: Prisma.SavedWorkerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSavedWorker>
+        }
+        groupBy: {
+          args: Prisma.SavedWorkerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SavedWorkerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SavedWorkerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SavedWorkerCountAggregateOutputType> | number
+        }
+      }
+    }
+    Message: {
+      payload: Prisma.$MessagePayload<ExtArgs>
+      fields: Prisma.MessageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MessageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MessageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        findFirst: {
+          args: Prisma.MessageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MessageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        findMany: {
+          args: Prisma.MessageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+        }
+        create: {
+          args: Prisma.MessageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        createMany: {
+          args: Prisma.MessageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MessageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+        }
+        delete: {
+          args: Prisma.MessageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        update: {
+          args: Prisma.MessageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        deleteMany: {
+          args: Prisma.MessageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MessageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MessageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+        }
+        upsert: {
+          args: Prisma.MessageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        aggregate: {
+          args: Prisma.MessageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMessage>
+        }
+        groupBy: {
+          args: Prisma.MessageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MessageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -771,6 +921,8 @@ export const WorkerScalarFieldEnum = {
   yearsExperience: 'yearsExperience',
   skills: 'skills',
   availability: 'availability',
+  availableDays: 'availableDays',
+  availableHours: 'availableHours',
   expectedMinPay: 'expectedMinPay',
   expectedMaxPay: 'expectedMaxPay',
   bio: 'bio',
@@ -790,6 +942,12 @@ export const WorkerScalarFieldEnum = {
   totalJobs: 'totalJobs',
   rating: 'rating',
   reviewCount: 'reviewCount',
+  ratingPunctuality: 'ratingPunctuality',
+  ratingQuality: 'ratingQuality',
+  ratingCommunication: 'ratingCommunication',
+  ratingValue: 'ratingValue',
+  isOnline: 'isOnline',
+  lastSeenAt: 'lastSeenAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -809,6 +967,7 @@ export const BookingScalarFieldEnum = {
   budget: 'budget',
   notes: 'notes',
   status: 'status',
+  reminderSent: 'reminderSent',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -822,11 +981,36 @@ export const ReviewScalarFieldEnum = {
   authorId: 'authorId',
   targetId: 'targetId',
   rating: 'rating',
+  ratingPunctuality: 'ratingPunctuality',
+  ratingQuality: 'ratingQuality',
+  ratingCommunication: 'ratingCommunication',
   comment: 'comment',
   createdAt: 'createdAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const SavedWorkerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  workerId: 'workerId',
+  createdAt: 'createdAt'
+} as const
+
+export type SavedWorkerScalarFieldEnum = (typeof SavedWorkerScalarFieldEnum)[keyof typeof SavedWorkerScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  content: 'content',
+  read: 'read',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1035,6 +1219,8 @@ export type GlobalOmitConfig = {
   worker?: Prisma.WorkerOmit
   booking?: Prisma.BookingOmit
   review?: Prisma.ReviewOmit
+  savedWorker?: Prisma.SavedWorkerOmit
+  message?: Prisma.MessageOmit
 }
 
 /* Types for Logging */

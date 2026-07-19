@@ -59,6 +59,18 @@ export default function Navbar() {
               >
                 Find Workers
               </Link>
+              {user?.role === "customer" && (
+                <Link
+                  href="/customer/dashboard"
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    isActive("/customer/dashboard")
+                      ? "bg-primary-light text-primary-dark"
+                      : "text-muted hover:text-foreground hover:bg-gray-100"
+                  }`}
+                >
+                  My Bookings
+                </Link>
+              )}
               {user?.role === "worker" && (
                 <Link
                   href="/worker/profile"
@@ -72,15 +84,39 @@ export default function Navbar() {
                 </Link>
               )}
               {user?.role === "admin" && (
+                <>
+                  <Link
+                    href="/admin/workers"
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      pathname.startsWith("/admin/workers")
+                        ? "bg-primary-light text-primary-dark"
+                        : "text-muted hover:text-foreground hover:bg-gray-100"
+                    }`}
+                  >
+                    Workers
+                  </Link>
+                  <Link
+                    href="/admin/analytics"
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      isActive("/admin/analytics")
+                        ? "bg-primary-light text-primary-dark"
+                        : "text-muted hover:text-foreground hover:bg-gray-100"
+                    }`}
+                  >
+                    Analytics
+                  </Link>
+                </>
+              )}
+              {user && (
                 <Link
-                  href="/admin/workers"
+                  href="/messages"
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    pathname.startsWith("/admin")
+                    isActive("/messages")
                       ? "bg-primary-light text-primary-dark"
                       : "text-muted hover:text-foreground hover:bg-gray-100"
                   }`}
                 >
-                  Admin Dashboard
+                  Messages
                 </Link>
               )}
             </div>
@@ -140,6 +176,31 @@ export default function Navbar() {
               <Link href="/search" onClick={() => setMobileOpen(false)} className="px-3 py-2 rounded-lg text-sm text-muted hover:bg-gray-100">
                 Find Workers
               </Link>
+              {user?.role === "customer" && (
+                <Link href="/customer/dashboard" onClick={() => setMobileOpen(false)} className="px-3 py-2 rounded-lg text-sm text-muted hover:bg-gray-100">
+                  My Bookings
+                </Link>
+              )}
+              {user?.role === "worker" && (
+                <Link href="/worker/profile" onClick={() => setMobileOpen(false)} className="px-3 py-2 rounded-lg text-sm text-muted hover:bg-gray-100">
+                  My Profile
+                </Link>
+              )}
+              {user?.role === "admin" && (
+                <>
+                  <Link href="/admin/workers" onClick={() => setMobileOpen(false)} className="px-3 py-2 rounded-lg text-sm text-muted hover:bg-gray-100">
+                    Workers
+                  </Link>
+                  <Link href="/admin/analytics" onClick={() => setMobileOpen(false)} className="px-3 py-2 rounded-lg text-sm text-muted hover:bg-gray-100">
+                    Analytics
+                  </Link>
+                </>
+              )}
+              {user && (
+                <Link href="/messages" onClick={() => setMobileOpen(false)} className="px-3 py-2 rounded-lg text-sm text-muted hover:bg-gray-100">
+                  Messages
+                </Link>
+              )}
               {!user && (
                 <>
                   <Link href="/login" onClick={() => setMobileOpen(false)} className="px-3 py-2 rounded-lg text-sm text-muted hover:bg-gray-100">

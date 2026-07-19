@@ -54,7 +54,9 @@ export const ModelName = {
   User: 'User',
   Worker: 'Worker',
   Booking: 'Booking',
-  Review: 'Review'
+  Review: 'Review',
+  SavedWorker: 'SavedWorker',
+  Message: 'Message'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -102,6 +104,8 @@ export const WorkerScalarFieldEnum = {
   yearsExperience: 'yearsExperience',
   skills: 'skills',
   availability: 'availability',
+  availableDays: 'availableDays',
+  availableHours: 'availableHours',
   expectedMinPay: 'expectedMinPay',
   expectedMaxPay: 'expectedMaxPay',
   bio: 'bio',
@@ -121,6 +125,12 @@ export const WorkerScalarFieldEnum = {
   totalJobs: 'totalJobs',
   rating: 'rating',
   reviewCount: 'reviewCount',
+  ratingPunctuality: 'ratingPunctuality',
+  ratingQuality: 'ratingQuality',
+  ratingCommunication: 'ratingCommunication',
+  ratingValue: 'ratingValue',
+  isOnline: 'isOnline',
+  lastSeenAt: 'lastSeenAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -140,6 +150,7 @@ export const BookingScalarFieldEnum = {
   budget: 'budget',
   notes: 'notes',
   status: 'status',
+  reminderSent: 'reminderSent',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -153,11 +164,36 @@ export const ReviewScalarFieldEnum = {
   authorId: 'authorId',
   targetId: 'targetId',
   rating: 'rating',
+  ratingPunctuality: 'ratingPunctuality',
+  ratingQuality: 'ratingQuality',
+  ratingCommunication: 'ratingCommunication',
   comment: 'comment',
   createdAt: 'createdAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const SavedWorkerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  workerId: 'workerId',
+  createdAt: 'createdAt'
+} as const
+
+export type SavedWorkerScalarFieldEnum = (typeof SavedWorkerScalarFieldEnum)[keyof typeof SavedWorkerScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  content: 'content',
+  read: 'read',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const SortOrder = {

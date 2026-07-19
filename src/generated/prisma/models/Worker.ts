@@ -35,6 +35,10 @@ export type WorkerAvgAggregateOutputType = {
   totalJobs: number | null
   rating: number | null
   reviewCount: number | null
+  ratingPunctuality: number | null
+  ratingQuality: number | null
+  ratingCommunication: number | null
+  ratingValue: number | null
 }
 
 export type WorkerSumAggregateOutputType = {
@@ -46,6 +50,10 @@ export type WorkerSumAggregateOutputType = {
   totalJobs: number | null
   rating: number | null
   reviewCount: number | null
+  ratingPunctuality: number | null
+  ratingQuality: number | null
+  ratingCommunication: number | null
+  ratingValue: number | null
 }
 
 export type WorkerMinAggregateOutputType = {
@@ -65,6 +73,8 @@ export type WorkerMinAggregateOutputType = {
   yearsExperience: number | null
   skills: string | null
   availability: string | null
+  availableDays: string | null
+  availableHours: string | null
   expectedMinPay: number | null
   expectedMaxPay: number | null
   bio: string | null
@@ -84,6 +94,12 @@ export type WorkerMinAggregateOutputType = {
   totalJobs: number | null
   rating: number | null
   reviewCount: number | null
+  ratingPunctuality: number | null
+  ratingQuality: number | null
+  ratingCommunication: number | null
+  ratingValue: number | null
+  isOnline: boolean | null
+  lastSeenAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -105,6 +121,8 @@ export type WorkerMaxAggregateOutputType = {
   yearsExperience: number | null
   skills: string | null
   availability: string | null
+  availableDays: string | null
+  availableHours: string | null
   expectedMinPay: number | null
   expectedMaxPay: number | null
   bio: string | null
@@ -124,6 +142,12 @@ export type WorkerMaxAggregateOutputType = {
   totalJobs: number | null
   rating: number | null
   reviewCount: number | null
+  ratingPunctuality: number | null
+  ratingQuality: number | null
+  ratingCommunication: number | null
+  ratingValue: number | null
+  isOnline: boolean | null
+  lastSeenAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -145,6 +169,8 @@ export type WorkerCountAggregateOutputType = {
   yearsExperience: number
   skills: number
   availability: number
+  availableDays: number
+  availableHours: number
   expectedMinPay: number
   expectedMaxPay: number
   bio: number
@@ -164,6 +190,12 @@ export type WorkerCountAggregateOutputType = {
   totalJobs: number
   rating: number
   reviewCount: number
+  ratingPunctuality: number
+  ratingQuality: number
+  ratingCommunication: number
+  ratingValue: number
+  isOnline: number
+  lastSeenAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -179,6 +211,10 @@ export type WorkerAvgAggregateInputType = {
   totalJobs?: true
   rating?: true
   reviewCount?: true
+  ratingPunctuality?: true
+  ratingQuality?: true
+  ratingCommunication?: true
+  ratingValue?: true
 }
 
 export type WorkerSumAggregateInputType = {
@@ -190,6 +226,10 @@ export type WorkerSumAggregateInputType = {
   totalJobs?: true
   rating?: true
   reviewCount?: true
+  ratingPunctuality?: true
+  ratingQuality?: true
+  ratingCommunication?: true
+  ratingValue?: true
 }
 
 export type WorkerMinAggregateInputType = {
@@ -209,6 +249,8 @@ export type WorkerMinAggregateInputType = {
   yearsExperience?: true
   skills?: true
   availability?: true
+  availableDays?: true
+  availableHours?: true
   expectedMinPay?: true
   expectedMaxPay?: true
   bio?: true
@@ -228,6 +270,12 @@ export type WorkerMinAggregateInputType = {
   totalJobs?: true
   rating?: true
   reviewCount?: true
+  ratingPunctuality?: true
+  ratingQuality?: true
+  ratingCommunication?: true
+  ratingValue?: true
+  isOnline?: true
+  lastSeenAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -249,6 +297,8 @@ export type WorkerMaxAggregateInputType = {
   yearsExperience?: true
   skills?: true
   availability?: true
+  availableDays?: true
+  availableHours?: true
   expectedMinPay?: true
   expectedMaxPay?: true
   bio?: true
@@ -268,6 +318,12 @@ export type WorkerMaxAggregateInputType = {
   totalJobs?: true
   rating?: true
   reviewCount?: true
+  ratingPunctuality?: true
+  ratingQuality?: true
+  ratingCommunication?: true
+  ratingValue?: true
+  isOnline?: true
+  lastSeenAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -289,6 +345,8 @@ export type WorkerCountAggregateInputType = {
   yearsExperience?: true
   skills?: true
   availability?: true
+  availableDays?: true
+  availableHours?: true
   expectedMinPay?: true
   expectedMaxPay?: true
   bio?: true
@@ -308,6 +366,12 @@ export type WorkerCountAggregateInputType = {
   totalJobs?: true
   rating?: true
   reviewCount?: true
+  ratingPunctuality?: true
+  ratingQuality?: true
+  ratingCommunication?: true
+  ratingValue?: true
+  isOnline?: true
+  lastSeenAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -416,6 +480,8 @@ export type WorkerGroupByOutputType = {
   yearsExperience: number
   skills: string
   availability: string
+  availableDays: string
+  availableHours: string
   expectedMinPay: number | null
   expectedMaxPay: number | null
   bio: string | null
@@ -435,6 +501,12 @@ export type WorkerGroupByOutputType = {
   totalJobs: number
   rating: number
   reviewCount: number
+  ratingPunctuality: number
+  ratingQuality: number
+  ratingCommunication: number
+  ratingValue: number
+  isOnline: boolean
+  lastSeenAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: WorkerCountAggregateOutputType | null
@@ -479,6 +551,8 @@ export type WorkerWhereInput = {
   yearsExperience?: Prisma.IntFilter<"Worker"> | number
   skills?: Prisma.StringFilter<"Worker"> | string
   availability?: Prisma.StringFilter<"Worker"> | string
+  availableDays?: Prisma.StringFilter<"Worker"> | string
+  availableHours?: Prisma.StringFilter<"Worker"> | string
   expectedMinPay?: Prisma.IntNullableFilter<"Worker"> | number | null
   expectedMaxPay?: Prisma.IntNullableFilter<"Worker"> | number | null
   bio?: Prisma.StringNullableFilter<"Worker"> | string | null
@@ -498,11 +572,18 @@ export type WorkerWhereInput = {
   totalJobs?: Prisma.IntFilter<"Worker"> | number
   rating?: Prisma.FloatFilter<"Worker"> | number
   reviewCount?: Prisma.IntFilter<"Worker"> | number
+  ratingPunctuality?: Prisma.FloatFilter<"Worker"> | number
+  ratingQuality?: Prisma.FloatFilter<"Worker"> | number
+  ratingCommunication?: Prisma.FloatFilter<"Worker"> | number
+  ratingValue?: Prisma.FloatFilter<"Worker"> | number
+  isOnline?: Prisma.BoolFilter<"Worker"> | boolean
+  lastSeenAt?: Prisma.DateTimeNullableFilter<"Worker"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
+  savedBy?: Prisma.SavedWorkerListRelationFilter
 }
 
 export type WorkerOrderByWithRelationInput = {
@@ -522,6 +603,8 @@ export type WorkerOrderByWithRelationInput = {
   yearsExperience?: Prisma.SortOrder
   skills?: Prisma.SortOrder
   availability?: Prisma.SortOrder
+  availableDays?: Prisma.SortOrder
+  availableHours?: Prisma.SortOrder
   expectedMinPay?: Prisma.SortOrderInput | Prisma.SortOrder
   expectedMaxPay?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -541,11 +624,18 @@ export type WorkerOrderByWithRelationInput = {
   totalJobs?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
+  ratingPunctuality?: Prisma.SortOrder
+  ratingQuality?: Prisma.SortOrder
+  ratingCommunication?: Prisma.SortOrder
+  ratingValue?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastSeenAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
+  savedBy?: Prisma.SavedWorkerOrderByRelationAggregateInput
 }
 
 export type WorkerWhereUniqueInput = Prisma.AtLeast<{
@@ -568,6 +658,8 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   yearsExperience?: Prisma.IntFilter<"Worker"> | number
   skills?: Prisma.StringFilter<"Worker"> | string
   availability?: Prisma.StringFilter<"Worker"> | string
+  availableDays?: Prisma.StringFilter<"Worker"> | string
+  availableHours?: Prisma.StringFilter<"Worker"> | string
   expectedMinPay?: Prisma.IntNullableFilter<"Worker"> | number | null
   expectedMaxPay?: Prisma.IntNullableFilter<"Worker"> | number | null
   bio?: Prisma.StringNullableFilter<"Worker"> | string | null
@@ -587,11 +679,18 @@ export type WorkerWhereUniqueInput = Prisma.AtLeast<{
   totalJobs?: Prisma.IntFilter<"Worker"> | number
   rating?: Prisma.FloatFilter<"Worker"> | number
   reviewCount?: Prisma.IntFilter<"Worker"> | number
+  ratingPunctuality?: Prisma.FloatFilter<"Worker"> | number
+  ratingQuality?: Prisma.FloatFilter<"Worker"> | number
+  ratingCommunication?: Prisma.FloatFilter<"Worker"> | number
+  ratingValue?: Prisma.FloatFilter<"Worker"> | number
+  isOnline?: Prisma.BoolFilter<"Worker"> | boolean
+  lastSeenAt?: Prisma.DateTimeNullableFilter<"Worker"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Worker"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
+  savedBy?: Prisma.SavedWorkerListRelationFilter
 }, "id" | "userId">
 
 export type WorkerOrderByWithAggregationInput = {
@@ -611,6 +710,8 @@ export type WorkerOrderByWithAggregationInput = {
   yearsExperience?: Prisma.SortOrder
   skills?: Prisma.SortOrder
   availability?: Prisma.SortOrder
+  availableDays?: Prisma.SortOrder
+  availableHours?: Prisma.SortOrder
   expectedMinPay?: Prisma.SortOrderInput | Prisma.SortOrder
   expectedMaxPay?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -630,6 +731,12 @@ export type WorkerOrderByWithAggregationInput = {
   totalJobs?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
+  ratingPunctuality?: Prisma.SortOrder
+  ratingQuality?: Prisma.SortOrder
+  ratingCommunication?: Prisma.SortOrder
+  ratingValue?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastSeenAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.WorkerCountOrderByAggregateInput
@@ -659,6 +766,8 @@ export type WorkerScalarWhereWithAggregatesInput = {
   yearsExperience?: Prisma.IntWithAggregatesFilter<"Worker"> | number
   skills?: Prisma.StringWithAggregatesFilter<"Worker"> | string
   availability?: Prisma.StringWithAggregatesFilter<"Worker"> | string
+  availableDays?: Prisma.StringWithAggregatesFilter<"Worker"> | string
+  availableHours?: Prisma.StringWithAggregatesFilter<"Worker"> | string
   expectedMinPay?: Prisma.IntNullableWithAggregatesFilter<"Worker"> | number | null
   expectedMaxPay?: Prisma.IntNullableWithAggregatesFilter<"Worker"> | number | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"Worker"> | string | null
@@ -678,6 +787,12 @@ export type WorkerScalarWhereWithAggregatesInput = {
   totalJobs?: Prisma.IntWithAggregatesFilter<"Worker"> | number
   rating?: Prisma.FloatWithAggregatesFilter<"Worker"> | number
   reviewCount?: Prisma.IntWithAggregatesFilter<"Worker"> | number
+  ratingPunctuality?: Prisma.FloatWithAggregatesFilter<"Worker"> | number
+  ratingQuality?: Prisma.FloatWithAggregatesFilter<"Worker"> | number
+  ratingCommunication?: Prisma.FloatWithAggregatesFilter<"Worker"> | number
+  ratingValue?: Prisma.FloatWithAggregatesFilter<"Worker"> | number
+  isOnline?: Prisma.BoolWithAggregatesFilter<"Worker"> | boolean
+  lastSeenAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Worker"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Worker"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Worker"> | Date | string
 }
@@ -698,6 +813,8 @@ export type WorkerCreateInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -717,11 +834,18 @@ export type WorkerCreateInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
   bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerUncheckedCreateInput = {
@@ -741,6 +865,8 @@ export type WorkerUncheckedCreateInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -760,10 +886,17 @@ export type WorkerUncheckedCreateInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerUpdateInput = {
@@ -782,6 +915,8 @@ export type WorkerUpdateInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -801,11 +936,18 @@ export type WorkerUpdateInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerUncheckedUpdateInput = {
@@ -825,6 +967,8 @@ export type WorkerUncheckedUpdateInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -844,10 +988,17 @@ export type WorkerUncheckedUpdateInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerCreateManyInput = {
@@ -867,6 +1018,8 @@ export type WorkerCreateManyInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -886,6 +1039,12 @@ export type WorkerCreateManyInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -906,6 +1065,8 @@ export type WorkerUpdateManyMutationInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -925,6 +1086,12 @@ export type WorkerUpdateManyMutationInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -946,6 +1113,8 @@ export type WorkerUncheckedUpdateManyInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -965,6 +1134,12 @@ export type WorkerUncheckedUpdateManyInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -991,6 +1166,8 @@ export type WorkerCountOrderByAggregateInput = {
   yearsExperience?: Prisma.SortOrder
   skills?: Prisma.SortOrder
   availability?: Prisma.SortOrder
+  availableDays?: Prisma.SortOrder
+  availableHours?: Prisma.SortOrder
   expectedMinPay?: Prisma.SortOrder
   expectedMaxPay?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -1010,6 +1187,12 @@ export type WorkerCountOrderByAggregateInput = {
   totalJobs?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
+  ratingPunctuality?: Prisma.SortOrder
+  ratingQuality?: Prisma.SortOrder
+  ratingCommunication?: Prisma.SortOrder
+  ratingValue?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastSeenAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1023,6 +1206,10 @@ export type WorkerAvgOrderByAggregateInput = {
   totalJobs?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
+  ratingPunctuality?: Prisma.SortOrder
+  ratingQuality?: Prisma.SortOrder
+  ratingCommunication?: Prisma.SortOrder
+  ratingValue?: Prisma.SortOrder
 }
 
 export type WorkerMaxOrderByAggregateInput = {
@@ -1042,6 +1229,8 @@ export type WorkerMaxOrderByAggregateInput = {
   yearsExperience?: Prisma.SortOrder
   skills?: Prisma.SortOrder
   availability?: Prisma.SortOrder
+  availableDays?: Prisma.SortOrder
+  availableHours?: Prisma.SortOrder
   expectedMinPay?: Prisma.SortOrder
   expectedMaxPay?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -1061,6 +1250,12 @@ export type WorkerMaxOrderByAggregateInput = {
   totalJobs?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
+  ratingPunctuality?: Prisma.SortOrder
+  ratingQuality?: Prisma.SortOrder
+  ratingCommunication?: Prisma.SortOrder
+  ratingValue?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastSeenAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1082,6 +1277,8 @@ export type WorkerMinOrderByAggregateInput = {
   yearsExperience?: Prisma.SortOrder
   skills?: Prisma.SortOrder
   availability?: Prisma.SortOrder
+  availableDays?: Prisma.SortOrder
+  availableHours?: Prisma.SortOrder
   expectedMinPay?: Prisma.SortOrder
   expectedMaxPay?: Prisma.SortOrder
   bio?: Prisma.SortOrder
@@ -1101,6 +1298,12 @@ export type WorkerMinOrderByAggregateInput = {
   totalJobs?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
+  ratingPunctuality?: Prisma.SortOrder
+  ratingQuality?: Prisma.SortOrder
+  ratingCommunication?: Prisma.SortOrder
+  ratingValue?: Prisma.SortOrder
+  isOnline?: Prisma.SortOrder
+  lastSeenAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1114,6 +1317,10 @@ export type WorkerSumOrderByAggregateInput = {
   totalJobs?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   reviewCount?: Prisma.SortOrder
+  ratingPunctuality?: Prisma.SortOrder
+  ratingQuality?: Prisma.SortOrder
+  ratingCommunication?: Prisma.SortOrder
+  ratingValue?: Prisma.SortOrder
 }
 
 export type WorkerScalarRelationFilter = {
@@ -1217,6 +1424,20 @@ export type WorkerUpdateOneRequiredWithoutReviewsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WorkerUpdateToOneWithWhereWithoutReviewsInput, Prisma.WorkerUpdateWithoutReviewsInput>, Prisma.WorkerUncheckedUpdateWithoutReviewsInput>
 }
 
+export type WorkerCreateNestedOneWithoutSavedByInput = {
+  create?: Prisma.XOR<Prisma.WorkerCreateWithoutSavedByInput, Prisma.WorkerUncheckedCreateWithoutSavedByInput>
+  connectOrCreate?: Prisma.WorkerCreateOrConnectWithoutSavedByInput
+  connect?: Prisma.WorkerWhereUniqueInput
+}
+
+export type WorkerUpdateOneRequiredWithoutSavedByNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkerCreateWithoutSavedByInput, Prisma.WorkerUncheckedCreateWithoutSavedByInput>
+  connectOrCreate?: Prisma.WorkerCreateOrConnectWithoutSavedByInput
+  upsert?: Prisma.WorkerUpsertWithoutSavedByInput
+  connect?: Prisma.WorkerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkerUpdateToOneWithWhereWithoutSavedByInput, Prisma.WorkerUpdateWithoutSavedByInput>, Prisma.WorkerUncheckedUpdateWithoutSavedByInput>
+}
+
 export type WorkerCreateWithoutUserInput = {
   id?: string
   fullName: string
@@ -1233,6 +1454,8 @@ export type WorkerCreateWithoutUserInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -1252,10 +1475,17 @@ export type WorkerCreateWithoutUserInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerUncheckedCreateWithoutUserInput = {
@@ -1274,6 +1504,8 @@ export type WorkerUncheckedCreateWithoutUserInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -1293,10 +1525,17 @@ export type WorkerUncheckedCreateWithoutUserInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerCreateOrConnectWithoutUserInput = {
@@ -1331,6 +1570,8 @@ export type WorkerUpdateWithoutUserInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1350,10 +1591,17 @@ export type WorkerUpdateWithoutUserInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerUncheckedUpdateWithoutUserInput = {
@@ -1372,6 +1620,8 @@ export type WorkerUncheckedUpdateWithoutUserInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1391,10 +1641,17 @@ export type WorkerUncheckedUpdateWithoutUserInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerCreateWithoutBookingsInput = {
@@ -1413,6 +1670,8 @@ export type WorkerCreateWithoutBookingsInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -1432,10 +1691,17 @@ export type WorkerCreateWithoutBookingsInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerUncheckedCreateWithoutBookingsInput = {
@@ -1455,6 +1721,8 @@ export type WorkerUncheckedCreateWithoutBookingsInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -1474,9 +1742,16 @@ export type WorkerUncheckedCreateWithoutBookingsInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerCreateOrConnectWithoutBookingsInput = {
@@ -1511,6 +1786,8 @@ export type WorkerUpdateWithoutBookingsInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1530,10 +1807,17 @@ export type WorkerUpdateWithoutBookingsInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerUncheckedUpdateWithoutBookingsInput = {
@@ -1553,6 +1837,8 @@ export type WorkerUncheckedUpdateWithoutBookingsInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1572,9 +1858,16 @@ export type WorkerUncheckedUpdateWithoutBookingsInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerCreateWithoutReviewsInput = {
@@ -1593,6 +1886,8 @@ export type WorkerCreateWithoutReviewsInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -1612,10 +1907,17 @@ export type WorkerCreateWithoutReviewsInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
   bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerUncheckedCreateWithoutReviewsInput = {
@@ -1635,6 +1937,8 @@ export type WorkerUncheckedCreateWithoutReviewsInput = {
   yearsExperience?: number
   skills?: string
   availability?: string
+  availableDays?: string
+  availableHours?: string
   expectedMinPay?: number | null
   expectedMaxPay?: number | null
   bio?: string | null
@@ -1654,9 +1958,16 @@ export type WorkerUncheckedCreateWithoutReviewsInput = {
   totalJobs?: number
   rating?: number
   reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
+  savedBy?: Prisma.SavedWorkerUncheckedCreateNestedManyWithoutWorkerInput
 }
 
 export type WorkerCreateOrConnectWithoutReviewsInput = {
@@ -1691,6 +2002,8 @@ export type WorkerUpdateWithoutReviewsInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1710,10 +2023,17 @@ export type WorkerUpdateWithoutReviewsInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUpdateManyWithoutWorkerNestedInput
 }
 
 export type WorkerUncheckedUpdateWithoutReviewsInput = {
@@ -1733,6 +2053,8 @@ export type WorkerUncheckedUpdateWithoutReviewsInput = {
   yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
   skills?: Prisma.StringFieldUpdateOperationsInput | string
   availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
   expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1752,9 +2074,232 @@ export type WorkerUncheckedUpdateWithoutReviewsInput = {
   totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
+  savedBy?: Prisma.SavedWorkerUncheckedUpdateManyWithoutWorkerNestedInput
+}
+
+export type WorkerCreateWithoutSavedByInput = {
+  id?: string
+  fullName: string
+  phone: string
+  whatsapp?: string | null
+  profilePicture?: string | null
+  age?: number | null
+  gender?: string | null
+  location: string
+  region?: string
+  languages?: string
+  serviceCategory: string
+  subServices?: string
+  yearsExperience?: number
+  skills?: string
+  availability?: string
+  availableDays?: string
+  availableHours?: string
+  expectedMinPay?: number | null
+  expectedMaxPay?: number | null
+  bio?: string | null
+  ghanaCardUrl?: string | null
+  passportUrl?: string | null
+  proofAddressUrl?: string | null
+  certificatesUrl?: string
+  references?: string
+  verificationStatus?: string
+  verifiedAt?: Date | string | null
+  verifiedBy?: string | null
+  rejectionReason?: string | null
+  trustScore?: number
+  idVerified?: boolean
+  referencesChecked?: boolean
+  employerConfirmed?: boolean
+  totalJobs?: number
+  rating?: number
+  reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutWorkerProfileInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutWorkerInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutWorkerInput
+}
+
+export type WorkerUncheckedCreateWithoutSavedByInput = {
+  id?: string
+  userId: string
+  fullName: string
+  phone: string
+  whatsapp?: string | null
+  profilePicture?: string | null
+  age?: number | null
+  gender?: string | null
+  location: string
+  region?: string
+  languages?: string
+  serviceCategory: string
+  subServices?: string
+  yearsExperience?: number
+  skills?: string
+  availability?: string
+  availableDays?: string
+  availableHours?: string
+  expectedMinPay?: number | null
+  expectedMaxPay?: number | null
+  bio?: string | null
+  ghanaCardUrl?: string | null
+  passportUrl?: string | null
+  proofAddressUrl?: string | null
+  certificatesUrl?: string
+  references?: string
+  verificationStatus?: string
+  verifiedAt?: Date | string | null
+  verifiedBy?: string | null
+  rejectionReason?: string | null
+  trustScore?: number
+  idVerified?: boolean
+  referencesChecked?: boolean
+  employerConfirmed?: boolean
+  totalJobs?: number
+  rating?: number
+  reviewCount?: number
+  ratingPunctuality?: number
+  ratingQuality?: number
+  ratingCommunication?: number
+  ratingValue?: number
+  isOnline?: boolean
+  lastSeenAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutWorkerInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutWorkerInput
+}
+
+export type WorkerCreateOrConnectWithoutSavedByInput = {
+  where: Prisma.WorkerWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkerCreateWithoutSavedByInput, Prisma.WorkerUncheckedCreateWithoutSavedByInput>
+}
+
+export type WorkerUpsertWithoutSavedByInput = {
+  update: Prisma.XOR<Prisma.WorkerUpdateWithoutSavedByInput, Prisma.WorkerUncheckedUpdateWithoutSavedByInput>
+  create: Prisma.XOR<Prisma.WorkerCreateWithoutSavedByInput, Prisma.WorkerUncheckedCreateWithoutSavedByInput>
+  where?: Prisma.WorkerWhereInput
+}
+
+export type WorkerUpdateToOneWithWhereWithoutSavedByInput = {
+  where?: Prisma.WorkerWhereInput
+  data: Prisma.XOR<Prisma.WorkerUpdateWithoutSavedByInput, Prisma.WorkerUncheckedUpdateWithoutSavedByInput>
+}
+
+export type WorkerUpdateWithoutSavedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.StringFieldUpdateOperationsInput | string
+  languages?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceCategory?: Prisma.StringFieldUpdateOperationsInput | string
+  subServices?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
+  skills?: Prisma.StringFieldUpdateOperationsInput | string
+  availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
+  expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ghanaCardUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passportUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  proofAddressUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificatesUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  references?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verifiedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trustScore?: Prisma.IntFieldUpdateOperationsInput | number
+  idVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  referencesChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  employerConfirmed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutWorkerProfileNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutWorkerNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutWorkerNestedInput
+}
+
+export type WorkerUncheckedUpdateWithoutSavedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  whatsapp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  age?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.StringFieldUpdateOperationsInput | string
+  languages?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceCategory?: Prisma.StringFieldUpdateOperationsInput | string
+  subServices?: Prisma.StringFieldUpdateOperationsInput | string
+  yearsExperience?: Prisma.IntFieldUpdateOperationsInput | number
+  skills?: Prisma.StringFieldUpdateOperationsInput | string
+  availability?: Prisma.StringFieldUpdateOperationsInput | string
+  availableDays?: Prisma.StringFieldUpdateOperationsInput | string
+  availableHours?: Prisma.StringFieldUpdateOperationsInput | string
+  expectedMinPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  expectedMaxPay?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ghanaCardUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passportUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  proofAddressUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificatesUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  references?: Prisma.StringFieldUpdateOperationsInput | string
+  verificationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verifiedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  trustScore?: Prisma.IntFieldUpdateOperationsInput | number
+  idVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  referencesChecked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  employerConfirmed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  totalJobs?: Prisma.IntFieldUpdateOperationsInput | number
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingPunctuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingQuality?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingCommunication?: Prisma.FloatFieldUpdateOperationsInput | number
+  ratingValue?: Prisma.FloatFieldUpdateOperationsInput | number
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastSeenAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutWorkerNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutWorkerNestedInput
 }
 
 
@@ -1765,11 +2310,13 @@ export type WorkerUncheckedUpdateWithoutReviewsInput = {
 export type WorkerCountOutputType = {
   bookings: number
   reviews: number
+  savedBy: number
 }
 
 export type WorkerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | WorkerCountOutputTypeCountBookingsArgs
   reviews?: boolean | WorkerCountOutputTypeCountReviewsArgs
+  savedBy?: boolean | WorkerCountOutputTypeCountSavedByArgs
 }
 
 /**
@@ -1796,6 +2343,13 @@ export type WorkerCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.ReviewWhereInput
 }
 
+/**
+ * WorkerCountOutputType without action
+ */
+export type WorkerCountOutputTypeCountSavedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedWorkerWhereInput
+}
+
 
 export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1814,6 +2368,8 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   yearsExperience?: boolean
   skills?: boolean
   availability?: boolean
+  availableDays?: boolean
+  availableHours?: boolean
   expectedMinPay?: boolean
   expectedMaxPay?: boolean
   bio?: boolean
@@ -1833,11 +2389,18 @@ export type WorkerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   totalJobs?: boolean
   rating?: boolean
   reviewCount?: boolean
+  ratingPunctuality?: boolean
+  ratingQuality?: boolean
+  ratingCommunication?: boolean
+  ratingValue?: boolean
+  isOnline?: boolean
+  lastSeenAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Worker$reviewsArgs<ExtArgs>
+  savedBy?: boolean | Prisma.Worker$savedByArgs<ExtArgs>
   _count?: boolean | Prisma.WorkerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["worker"]>
 
@@ -1858,6 +2421,8 @@ export type WorkerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   yearsExperience?: boolean
   skills?: boolean
   availability?: boolean
+  availableDays?: boolean
+  availableHours?: boolean
   expectedMinPay?: boolean
   expectedMaxPay?: boolean
   bio?: boolean
@@ -1877,6 +2442,12 @@ export type WorkerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   totalJobs?: boolean
   rating?: boolean
   reviewCount?: boolean
+  ratingPunctuality?: boolean
+  ratingQuality?: boolean
+  ratingCommunication?: boolean
+  ratingValue?: boolean
+  isOnline?: boolean
+  lastSeenAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1899,6 +2470,8 @@ export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   yearsExperience?: boolean
   skills?: boolean
   availability?: boolean
+  availableDays?: boolean
+  availableHours?: boolean
   expectedMinPay?: boolean
   expectedMaxPay?: boolean
   bio?: boolean
@@ -1918,6 +2491,12 @@ export type WorkerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   totalJobs?: boolean
   rating?: boolean
   reviewCount?: boolean
+  ratingPunctuality?: boolean
+  ratingQuality?: boolean
+  ratingCommunication?: boolean
+  ratingValue?: boolean
+  isOnline?: boolean
+  lastSeenAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1940,6 +2519,8 @@ export type WorkerSelectScalar = {
   yearsExperience?: boolean
   skills?: boolean
   availability?: boolean
+  availableDays?: boolean
+  availableHours?: boolean
   expectedMinPay?: boolean
   expectedMaxPay?: boolean
   bio?: boolean
@@ -1959,15 +2540,22 @@ export type WorkerSelectScalar = {
   totalJobs?: boolean
   rating?: boolean
   reviewCount?: boolean
+  ratingPunctuality?: boolean
+  ratingQuality?: boolean
+  ratingCommunication?: boolean
+  ratingValue?: boolean
+  isOnline?: boolean
+  lastSeenAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "phone" | "whatsapp" | "profilePicture" | "age" | "gender" | "location" | "region" | "languages" | "serviceCategory" | "subServices" | "yearsExperience" | "skills" | "availability" | "expectedMinPay" | "expectedMaxPay" | "bio" | "ghanaCardUrl" | "passportUrl" | "proofAddressUrl" | "certificatesUrl" | "references" | "verificationStatus" | "verifiedAt" | "verifiedBy" | "rejectionReason" | "trustScore" | "idVerified" | "referencesChecked" | "employerConfirmed" | "totalJobs" | "rating" | "reviewCount" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
+export type WorkerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "fullName" | "phone" | "whatsapp" | "profilePicture" | "age" | "gender" | "location" | "region" | "languages" | "serviceCategory" | "subServices" | "yearsExperience" | "skills" | "availability" | "availableDays" | "availableHours" | "expectedMinPay" | "expectedMaxPay" | "bio" | "ghanaCardUrl" | "passportUrl" | "proofAddressUrl" | "certificatesUrl" | "references" | "verificationStatus" | "verifiedAt" | "verifiedBy" | "rejectionReason" | "trustScore" | "idVerified" | "referencesChecked" | "employerConfirmed" | "totalJobs" | "rating" | "reviewCount" | "ratingPunctuality" | "ratingQuality" | "ratingCommunication" | "ratingValue" | "isOnline" | "lastSeenAt" | "createdAt" | "updatedAt", ExtArgs["result"]["worker"]>
 export type WorkerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   bookings?: boolean | Prisma.Worker$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Worker$reviewsArgs<ExtArgs>
+  savedBy?: boolean | Prisma.Worker$savedByArgs<ExtArgs>
   _count?: boolean | Prisma.WorkerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WorkerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1983,6 +2571,7 @@ export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     user: Prisma.$UserPayload<ExtArgs>
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
+    savedBy: Prisma.$SavedWorkerPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2001,6 +2590,8 @@ export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     yearsExperience: number
     skills: string
     availability: string
+    availableDays: string
+    availableHours: string
     expectedMinPay: number | null
     expectedMaxPay: number | null
     bio: string | null
@@ -2020,6 +2611,12 @@ export type $WorkerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     totalJobs: number
     rating: number
     reviewCount: number
+    ratingPunctuality: number
+    ratingQuality: number
+    ratingCommunication: number
+    ratingValue: number
+    isOnline: boolean
+    lastSeenAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["worker"]>
@@ -2419,6 +3016,7 @@ export interface Prisma__WorkerClient<T, Null = never, ExtArgs extends runtime.T
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   bookings<T extends Prisma.Worker$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Worker$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.Worker$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Worker$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedBy<T extends Prisma.Worker$savedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Worker$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedWorkerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2464,6 +3062,8 @@ export interface WorkerFieldRefs {
   readonly yearsExperience: Prisma.FieldRef<"Worker", 'Int'>
   readonly skills: Prisma.FieldRef<"Worker", 'String'>
   readonly availability: Prisma.FieldRef<"Worker", 'String'>
+  readonly availableDays: Prisma.FieldRef<"Worker", 'String'>
+  readonly availableHours: Prisma.FieldRef<"Worker", 'String'>
   readonly expectedMinPay: Prisma.FieldRef<"Worker", 'Int'>
   readonly expectedMaxPay: Prisma.FieldRef<"Worker", 'Int'>
   readonly bio: Prisma.FieldRef<"Worker", 'String'>
@@ -2483,6 +3083,12 @@ export interface WorkerFieldRefs {
   readonly totalJobs: Prisma.FieldRef<"Worker", 'Int'>
   readonly rating: Prisma.FieldRef<"Worker", 'Float'>
   readonly reviewCount: Prisma.FieldRef<"Worker", 'Int'>
+  readonly ratingPunctuality: Prisma.FieldRef<"Worker", 'Float'>
+  readonly ratingQuality: Prisma.FieldRef<"Worker", 'Float'>
+  readonly ratingCommunication: Prisma.FieldRef<"Worker", 'Float'>
+  readonly ratingValue: Prisma.FieldRef<"Worker", 'Float'>
+  readonly isOnline: Prisma.FieldRef<"Worker", 'Boolean'>
+  readonly lastSeenAt: Prisma.FieldRef<"Worker", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Worker", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Worker", 'DateTime'>
 }
@@ -2931,6 +3537,30 @@ export type Worker$reviewsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
+}
+
+/**
+ * Worker.savedBy
+ */
+export type Worker$savedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedWorker
+   */
+  select?: Prisma.SavedWorkerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedWorker
+   */
+  omit?: Prisma.SavedWorkerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedWorkerInclude<ExtArgs> | null
+  where?: Prisma.SavedWorkerWhereInput
+  orderBy?: Prisma.SavedWorkerOrderByWithRelationInput | Prisma.SavedWorkerOrderByWithRelationInput[]
+  cursor?: Prisma.SavedWorkerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedWorkerScalarFieldEnum | Prisma.SavedWorkerScalarFieldEnum[]
 }
 
 /**

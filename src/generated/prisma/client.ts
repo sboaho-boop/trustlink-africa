@@ -61,3 +61,13 @@ export type Booking = Prisma.BookingModel
  * 
  */
 export type Review = Prisma.ReviewModel
+/**
+ * Model SavedWorker
+ * 
+ */
+export type SavedWorker = Prisma.SavedWorkerModel
+/**
+ * Model Message
+ * 
+ */
+export type Message = Prisma.MessageModel

@@ -13,6 +13,7 @@ export async function GET(request: Request) {
     const verified = searchParams.get("verified")
     const search = searchParams.get("search")
     const sort = searchParams.get("sort") || "trustScore"
+    const onlineOnly = searchParams.get("onlineOnly") === "true"
     const page = parseInt(searchParams.get("page") || "1")
     const limit = 12
     const skip = (page - 1) * limit
@@ -28,6 +29,7 @@ export async function GET(request: Request) {
     if (availability) where.availability = availability
     if (minExperience) where.yearsExperience = { gte: parseInt(minExperience) }
     if (verified === "true") where.verificationStatus = "approved"
+    if (onlineOnly) where.isOnline = true
     if (search) {
       where.OR = [
         { fullName: { contains: search } },
@@ -42,6 +44,7 @@ export async function GET(request: Request) {
     if (sort === "rating") orderBy = { rating: "desc" }
     if (sort === "experience") orderBy = { yearsExperience: "desc" }
     if (sort === "newest") orderBy = { createdAt: "desc" }
+    if (sort === "price") orderBy = { expectedMinPay: "asc" }
 
     const [workers, total] = await Promise.all([
       prisma.worker.findMany({

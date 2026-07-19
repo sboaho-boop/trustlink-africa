@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json()
-    const { workerId, rating, comment } = body
+    const { workerId, rating, comment, ratingPunctuality, ratingQuality, ratingCommunication } = body
 
     if (!workerId || !rating) {
       return NextResponse.json({ error: "workerId and rating are required" }, { status: 400 })
@@ -36,16 +36,24 @@ export async function POST(request: Request) {
         workerId,
         authorId: payload.userId,
         rating: parseInt(rating),
+        ratingPunctuality: ratingPunctuality ? parseInt(ratingPunctuality) : parseInt(rating),
+        ratingQuality: ratingQuality ? parseInt(ratingQuality) : parseInt(rating),
+        ratingCommunication: ratingCommunication ? parseInt(ratingCommunication) : parseInt(rating),
         comment: comment || "",
       },
     })
 
     const reviews = await prisma.review.findMany({
       where: { workerId },
-      select: { rating: true },
+      select: { rating: true, ratingPunctuality: true, ratingQuality: true, ratingCommunication: true },
     })
 
-    const avgRating = reviews.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) / reviews.length
+    const avgRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+    const avgPunctuality = reviews.reduce((sum, r) => sum + r.ratingPunctuality, 0) / reviews.length
+    const avgQuality = reviews.reduce((sum, r) => sum + r.ratingQuality, 0) / reviews.length
+    const avgCommunication = reviews.reduce((sum, r) => sum + r.ratingCommunication, 0) / reviews.length
+    const avgValue = (avgPunctuality + avgQuality + avgCommunication) / 3
+
     const trustScore = calculateTrustScore({
       idVerified: worker.idVerified,
       referencesChecked: worker.referencesChecked,
@@ -60,6 +68,10 @@ export async function POST(request: Request) {
       data: {
         rating: Math.round(avgRating * 10) / 10,
         reviewCount: reviews.length,
+        ratingPunctuality: Math.round(avgPunctuality * 10) / 10,
+        ratingQuality: Math.round(avgQuality * 10) / 10,
+        ratingCommunication: Math.round(avgCommunication * 10) / 10,
+        ratingValue: Math.round(avgValue * 10) / 10,
         trustScore,
       },
     })

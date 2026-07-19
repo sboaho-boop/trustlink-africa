@@ -18,6 +18,9 @@ model User {
   bookings      Booking[]
   reviewsGiven  Review[]  @relation("ReviewAuthor")
   reviewsReceived Review[] @relation("ReviewTarget")
+  savedWorkers  SavedWorker[]
+  messagesSent  Message[] @relation("MessageSender")
+  messagesReceived Message[] @relation("MessageReceiver")
 }
 
 model Worker {
@@ -40,6 +43,8 @@ model Worker {
   yearsExperience Int      @default(0)
   skills          String   @default("")
   availability    String   @default("full-time")
+  availableDays   String   @default("mon,tue,wed,thu,fri")
+  availableHours  String   @default("08:00-17:00")
   expectedMinPay  Int?
   expectedMaxPay  Int?
   bio             String?
@@ -63,9 +68,17 @@ model Worker {
 
   rating          Float    @default(0)
   reviewCount     Int      @default(0)
+  ratingPunctuality Float @default(0)
+  ratingQuality   Float    @default(0)
+  ratingCommunication Float @default(0)
+  ratingValue     Float    @default(0)
+
+  isOnline        Boolean  @default(false)
+  lastSeenAt      DateTime?
 
   bookings        Booking[]
   reviews          Review[]
+  savedBy          SavedWorker[]
 
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
@@ -87,6 +100,7 @@ model Booking {
   notes           String?
 
   status          String   @default("pending")
+  reminderSent    Boolean  @default(false)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
@@ -100,7 +114,32 @@ model Review {
   targetId    String?
   target      User?    @relation("ReviewTarget", fields: [targetId], references: [id])
 
-  rating      Int
-  comment     String?
+  rating              Int
+  ratingPunctuality   Int   @default(0)
+  ratingQuality       Int   @default(0)
+  ratingCommunication Int   @default(0)
+  comment             String?
+  createdAt           DateTime @default(now())
+}
+
+model SavedWorker {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workerId  String
+  worker    Worker   @relation(fields: [workerId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, workerId])
+}
+
+model Message {
+  id          String   @id @default(uuid())
+  senderId    String
+  sender      User     @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiverId  String
+  receiver    User     @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  content     String
+  read        Boolean  @default(false)
   createdAt   DateTime @default(now())
 }

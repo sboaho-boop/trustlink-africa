@@ -25,6 +25,7 @@ function SearchContent() {
     minExperience: "",
     sort: "trustScore",
     search: "",
+    onlineOnly: false,
   })
 
   const fetchWorkers = useCallback(async () => {
@@ -38,6 +39,7 @@ function SearchContent() {
       if (filters.minExperience) params.set("minExperience", filters.minExperience)
       if (filters.sort) params.set("sort", filters.sort)
       if (filters.search) params.set("search", filters.search)
+      if (filters.onlineOnly) params.set("onlineOnly", "true")
       params.set("page", page.toString())
 
       const res = await fetch(`/api/workers?${params}`)
@@ -131,8 +133,20 @@ function SearchContent() {
               { value: "rating", label: "Rating" },
               { value: "experience", label: "Experience" },
               { value: "newest", label: "Newest" },
+              { value: "price", label: "Price (Low to High)" },
             ]}
           />
+          <div className="flex items-end">
+            <label className="flex items-center gap-2 cursor-pointer px-3 py-2.5 rounded-lg border border-border hover:bg-gray-50 transition-colors w-full">
+              <input
+                type="checkbox"
+                checked={filters.onlineOnly}
+                onChange={(e) => { setFilters({ ...filters, onlineOnly: e.target.checked }); setPage(1) }}
+                className="rounded border-gray-300 text-primary focus:ring-primary"
+              />
+              <span className="text-sm text-foreground">Online Now</span>
+            </label>
+          </div>
         </div>
       </div>
 
